@@ -42,6 +42,22 @@ def main():
             break
         else:
             print("Choix invalide.")
+def delete_expense():
+    if not expenses:
+        print("Aucune dépense à supprimer.")
+        return
+    for number, expense in enumerate(expenses, start=1):
+        print(f"{number}. {expense['description']}")
+    choice = input("Numéro de la dépense à supprimer : ")
+    if not choice.isdigit():
+        print("Numéro de dépense invalide.")
+        return
+    index = int(choice) - 1
+    if 0 <= index < len(expenses):
+        removed = expenses.pop(index)
+        print(f"Supprimée : {removed['description']}")
+    else:
+        print("Numéro de dépense invalide.")
 
 if __name__ == "__main__":
     main()
